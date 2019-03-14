@@ -415,9 +415,10 @@ export default {
     padding-top: .1rem;
     color:rgba(102,102,102,1);
     display: -webkit-box;
-    -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
     overflow: hidden;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
 }
 .shu-book-list > .right-content > .author{
     font-size: .36rem;
