@@ -417,7 +417,9 @@ export default {
     display: -webkit-box;
     -webkit-line-clamp: 3;
     overflow: hidden;
+    /*! autoprefixer: off */
     -webkit-box-orient: vertical;
+    /* autoprefixer: on */
     text-overflow: ellipsis;
 }
 .shu-book-list > .right-content > .author{
