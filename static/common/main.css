@@ -1,0 +1,31 @@
+body {
+    position: fixed;
+    max-width: 10rem;
+    width: 100%;
+    height: 100%;
+    left: calc(50% - 5rem);
+    overflow: auto;
+    margin: 0 auto !important;
+    background-color: #efefef;
+}
+
+/*主题色 #FFD100*/
+
+a:link,a:active,a:visited,a:hover{
+    text-decoration: none !important;
+    color:rgba(153,153,153,1);
+}
+i{
+    font-style: normal;
+}
+.clear::after{
+    content:'';
+    display: block;
+    clear: both;
+}
+.pull_left{
+    float: left;
+}
+.pull_right{
+    float: right;
+}
