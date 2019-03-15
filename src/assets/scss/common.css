@@ -1,0 +1,242 @@
+/* 推荐 收藏导航*/
+
+.my-nav-box {
+    color: rgba(117, 117, 117, 1);
+    padding: 0.4rem 0;
+    font-size: 0.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    overflow-x: scroll;
+    /* 1 */
+}
+
+.my-nav-box>span {
+    position: relative;
+}
+
+.my-nav-box>span.active {
+    color: #000;
+    font-size: 0.54rem;
+}
+
+.my-nav-box>span.active::after {
+    content: "";
+    position: absolute;
+    width: 80%;
+    height: 0.12rem;
+    background-color: #ffd100;
+    bottom: -0.25rem;
+    left: 10%;
+    border-radius: 0.1rem;
+}
+
+.my-nav-box>span:first-child {
+    margin-right: 0.4rem;
+}
+
+
+/* 书架 */
+
+.shelf-container {}
+
+.title {
+    font-weight: bold;
+}
+
+.shelf-list {
+    margin-top: 0.4rem;
+    padding: 0.4rem 0.4rem 0;
+    background-color: #fff;
+}
+
+.myCollection .shelf-list {
+    border-top: 1px solid #eee;
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.myCollection .bookshelf-container {
+    height: calc(100vh - 3.4rem);
+    overflow: auto;
+}
+
+.shelf-list>.title {
+    padding: 0.2rem 0;
+    font-size: 0.54rem;
+    position: relative;
+}
+
+.shelf-list>.title.sign::after {
+    content: '';
+    position: absolute;
+    width: .6rem;
+    height: 0.12rem;
+    background-color: #ffd100;
+    bottom: -.1rem;
+    left: 0;
+    border-radius: 0.1rem;
+}
+
+.shelf-list>.title a {
+    font-size: 0.36rem;
+}
+
+.shelf-list>.title a .iconfont {
+    vertical-align: middle;
+}
+
+.shelf-list>.sub-title {
+    font-size: 0.36rem;
+}
+
+.shelf-list>.sub-title .tag {
+    color: #3e3508;
+    background-color: #ffd400;
+    padding: 0.1rem 0.2rem;
+    border-top-left-radius: 0.4rem;
+    border-top-right-radius: 0.4rem;
+    border-bottom-right-radius: 0.4rem;
+    margin-right: 0.1rem;
+}
+
+.shelf-list>.sub-title .time {
+    color: #666;
+}
+
+.shelf-list>.sub-title .time i {
+    font-size: 0.48rem;
+    color: #333;
+}
+
+.heng-book-container {
+    padding: 0.8rem 0;
+    white-space: nowrap;
+    overflow: hidden;
+    overflow-x: scroll;
+    /* 1 */
+}
+
+.heng-book-box {}
+
+.heng-book-list {
+    display: inline-block;
+    width: 2.4rem;
+    padding: 0.6rem 0.6rem 0;
+    border: 1px solid rgb(216, 216, 216);
+    text-align: center;
+    border-radius: 0.2rem;
+    margin-right: 0.4rem;
+}
+
+.heng-book-list>img {
+    width: 100%;
+}
+
+.heng-book-list .title {
+    padding: 0.4rem 0;
+    font-size: 0.42rem;
+}
+
+.one-book-box {
+    padding: 0.4rem;
+    border: 1px solid rgb(216, 216, 216);
+    border-radius: 0.2rem;
+    position: relative;
+}
+
+.shelf-list.one-book {
+    padding-bottom: 0.4rem;
+}
+
+.one-book-box>img {
+    width: 2.6rem;
+    float: left;
+    vertical-align: middle;
+}
+
+.one-book-box .right-content {
+    width: calc(100% - 3.6rem);
+    padding-left: 0.4rem;
+    padding-right: 0.2rem;
+    position: absolute;
+    left: 3rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.one-book-box>.right-content>.title {
+    font-size: 0.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.one-book-box>.right-content>.tips {
+    font-size: 0.38rem;
+    padding-top: 0.2rem;
+    color: rgba(102, 102, 102, 1);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+/* 竖排书架 */
+
+.shu-book-box {
+    padding-bottom: 0.4rem;
+}
+
+.shu-book-list {
+    position: relative;
+    margin-top: 0.6rem;
+}
+
+.shu-book-list>img {
+    width: 2.6rem;
+    float: left;
+    vertical-align: middle;
+    border-radius: 0.2rem;
+}
+
+.shu-book-list .right-content {
+    width: calc(100% - 3.6rem);
+    padding-left: 0.4rem;
+    padding-right: 0.2rem;
+    position: absolute;
+    left: 3rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.shu-book-list>.right-content>.title {
+    font-size: 0.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.shu-book-list>.right-content>.tips {
+    font-size: 0.38rem;
+    padding-top: 0.1rem;
+    color: rgba(102, 102, 102, 1);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    /*! autoprefixer: off */
+    -webkit-box-orient: vertical;
+    /* autoprefixer: on */
+    text-overflow: ellipsis;
+}
+
+.shu-book-list>.right-content>.author {
+    font-size: 0.36rem;
+    color: rgba(76, 76, 76, 1);
+    padding-top: 0.2rem;
+}
+
+.shu-book-list>.right-content>.author>span {
+    font-size: 0.36rem;
+    color: #ccc;
+    float: right;
+}
