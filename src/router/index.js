@@ -6,6 +6,10 @@ import Magazine from '@/views/Magazine'
 import BookDetails from '@/views/BookDetails'
 import Search from '@/views/Search'
 import UserCenter from '@/views/UserCenter'
+import BuyMember from '@/views/BuyMember'
+import MailSet from '@/views/MailSet'
+import Feedback from '@/views/Feedback'
+import InviteCodeActive from '@/views/InviteCodeActive'
 
 Vue.use(Router)
 
@@ -61,6 +65,42 @@ export default new Router({
             component: UserCenter,
             meta: {
                 title: '个人中心',
+                keepAlive: true
+            }
+        },
+        {
+            path: '/BuyMember',
+            name: 'BuyMember',
+            component: BuyMember,
+            meta: {
+                title: '购买会员',
+                keepAlive: true
+            }
+        },
+        {
+            path: '/MailSet',
+            name: 'MailSet',
+            component: MailSet,
+            meta: {
+                title: '邮箱设置',
+                keepAlive: true
+            }
+        },
+        {
+            path: '/Feedback',
+            name: 'Feedback',
+            component: Feedback,
+            meta: {
+                title: '反馈',
+                keepAlive: true
+            }
+        },
+        {
+            path: '/InviteCodeActive',
+            name: 'InviteCodeActive',
+            component: InviteCodeActive,
+            meta: {
+                title: '邀请码激活',
                 keepAlive: true
             }
         }
