@@ -3,7 +3,7 @@
     <div class="header-box">
       <div class="search-box">
         <i class="iconfont icon-sousuo"></i>
-        <input type="text" placeholder="搜索">
+        <input type="text" placeholder="搜索" readonly @click="$router.push({path: 'Search'})">
       </div>
       <div class="my-nav-box">
         <span
@@ -181,7 +181,8 @@ export default {
         },
         {
           imgSrc: "static/images/index/icon-5@2x.png",
-          name: "签到有礼"
+          name: "个人中心",
+          path: 'UserCenter'
         }
       ],
       activityBookArr: [

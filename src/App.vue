@@ -5,9 +5,8 @@
         <keep-alive>
           <router-view v-if="$route.meta.keepAlive" class="child-view"/>
         </keep-alive>
-        <router-view v-if="!$route.meta.keepAlive" class="child-view">
-          <!-- 这里是不被缓存的视图组件，比如 page3 -->
-        </router-view>
+        <router-view v-if="!$route.meta.keepAlive" class="child-view"/>
+        <!-- 这里是不被缓存的视图组件，比如 page3 -->
       </navigation>
     </transition>
   </div>

@@ -4,6 +4,8 @@ import Home from '@/views/Home'
 import OneClass from '@/views/OneClass'
 import Magazine from '@/views/Magazine'
 import BookDetails from '@/views/BookDetails'
+import Search from '@/views/Search'
+import UserCenter from '@/views/UserCenter'
 
 Vue.use(Router)
 
@@ -41,6 +43,24 @@ export default new Router({
             component: BookDetails,
             meta: {
                 title: '',
+                keepAlive: true
+            }
+        },
+        {
+            path: '/Search',
+            name: 'Search',
+            component: Search,
+            meta: {
+                title: '搜索',
+                keepAlive: true
+            }
+        },
+        {
+            path: '/UserCenter',
+            name: 'UserCenter',
+            component: UserCenter,
+            meta: {
+                title: '个人中心',
                 keepAlive: true
             }
         }
