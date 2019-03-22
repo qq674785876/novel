@@ -39,11 +39,11 @@ export default {
 .slideLeft-enter,
 .slideRight-leave-to {
   opacity: 0;
-  transform: translate(100%, 0);
+  transform: translate(100%,100%);
 }
 .slideRight-enter,
 .slideLeft-leave-to {
   opacity: 0;
-  transform: translate(-100%, 0);
+  transform: translate(-100%, -100%);
 }
 </style>

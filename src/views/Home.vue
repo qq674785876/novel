@@ -66,7 +66,7 @@
             <i class="iconfont icon-iconzhengli-"></i>
           </a>
         </p>
-        <div class="one-book-box clear">
+        <div class="one-book-box clear" @click="goBookDetails">
           <img src="static/images/test/book-1.jpg" alt>
           <div class="right-content">
             <p class="title">曾今，我爱国一个少年的人很大爱戴曾今，我爱国一个少年的人很大爱戴</p>
@@ -267,6 +267,10 @@ export default {
     gnJump(path){
       var _this =this;
       _this.$router.push({path: path})
+    },
+    goBookDetails(){
+      var _this =this;
+      _this.$router.push({path: 'BookDetails'})
     }
   },
   created: function() {

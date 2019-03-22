@@ -44,7 +44,7 @@ export default {
             icon: 'static/images/userCenter/icon-2.png'
           },{
             name: '推送记录',
-            url: '',
+            url: 'PushRecord',
             icon: 'static/images/userCenter/icon-3.png'
           },{
             name: '杂志订阅',

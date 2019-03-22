@@ -10,6 +10,9 @@ import BuyMember from '@/views/BuyMember'
 import MailSet from '@/views/MailSet'
 import Feedback from '@/views/Feedback'
 import InviteCodeActive from '@/views/InviteCodeActive'
+import PushRecord from '@/views/PushRecord'
+import PushDetails from '@/views/PushDetails'
+import MagazineDetails from '@/views/MagazineDetails'
 
 Vue.use(Router)
 
@@ -45,6 +48,15 @@ export default new Router({
             path: '/BookDetails',
             name: 'BookDetails',
             component: BookDetails,
+            meta: {
+                title: '',
+                keepAlive: true
+            }
+        },
+        {
+            path: '/MagazineDetails',
+            name: 'MagazineDetails',
+            component: MagazineDetails,
             meta: {
                 title: '',
                 keepAlive: true
@@ -101,6 +113,24 @@ export default new Router({
             component: InviteCodeActive,
             meta: {
                 title: '邀请码激活',
+                keepAlive: true
+            }
+        },
+        {
+            path: '/PushRecord',
+            name: 'PushRecord',
+            component: PushRecord,
+            meta: {
+                title: '推送记录',
+                keepAlive: true
+            }
+        },
+        {
+            path: '/PushDetails',
+            name: 'PushDetails',
+            component: PushDetails,
+            meta: {
+                title: '推送状态',
                 keepAlive: true
             }
         }

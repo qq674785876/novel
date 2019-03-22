@@ -190,8 +190,8 @@ export default {
     jump(id){
       var _this = this;
       _this.$router.push({
-        name: 'BookDetails',
-        params: {
+        name: 'MagazineDetails',
+        query: {
           id: id
         }
       })
