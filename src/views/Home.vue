@@ -260,6 +260,12 @@ export default {
     })
   },
   methods: {
+    getAdvertList: function(){
+      var _this = this;
+      _this.$ajax.get('/v1/advertList').then((res) => {
+      // 　　console.log(res)
+      })
+    },
     activeMyNav: function(type) {
       var _this = this;
       _this.activeNavIndex = type;
@@ -275,8 +281,9 @@ export default {
   },
   created: function() {
     var _this = this;
-    document.body.style.display = "block";
-    this.$toast.center('已经加入推送队列');
+    document.body.style.display = "block"
+    // this.$toast.center('已经加入推送队列');
+    _this.getAdvertList()
   }
 };
 </script>
