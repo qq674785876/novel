@@ -10,7 +10,7 @@
     </div>
     <div class="book-container" id="scrollBox">
       <div class="book-box clear">
-        <div class="book-list pull_left" v-for="(item, index) in bookArr" :key="index">
+        <div class="book-list pull_left" v-for="(item, index) in bookArr" :key="index" @click="tzUrl()">
           <p class="name">{{item.name}}</p>
           <p class="tips">{{item.num}}本书</p>
           <img :src="item.imgSrc" alt="">
@@ -163,6 +163,14 @@ export default {
     })
   },
   methods: {
+    tzUrl: function(bookType){
+      var _this =this
+      _this.$router.push({path: 'TwoClass',
+        query: {
+          id: bookType
+        }
+      })
+    },
     activeMyNav: function(type) {
       var _this = this;
       _this.activeNavIndex = type;

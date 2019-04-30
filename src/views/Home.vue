@@ -18,7 +18,7 @@
           <swiper :options="swiperOption()">
             <!-- slides -->
             <swiper-slide v-for="(item, index) of swiperArr" :key="index">
-              <img :src="item.imgSrc" alt style="width: 100%;">
+              <img :src="item.image" alt style="width: 100%;">
             </swiper-slide>
             <!-- 如果需要分页器 -->
             <div class="swiper-pagination" slot="pagination"></div>
@@ -43,22 +43,19 @@
         </p>
         <p class="sub-title">
           <span class="tag">免费推送</span>
-          <span class="time">
-            距离结束
-            <i>6</i>天
-            <i>24</i>小时
-          </span>
+          <span class="time" v-if="activityBook.expireTime" v-html="activityBook.expireTime"></span>
+          <span class="time" v-else>已过期</span>
         </p>
         <div class="heng-book-container">
           <div class="heng-book-box">
-            <div class="heng-book-list" v-for="(item, index) in activityBookArr" :key="index" @click="gnJump(item.path)">
+            <div class="heng-book-list" v-for="(item, index) in activityBook.books" :key="index" @click="gnJump(item.path)">
               <img :src="item.imgSrc" alt>
-              <p class="title">去推送</p>
+              <p class="title">{{item.name || '去推送'}}</p>
             </div>
           </div>
         </div>
       </div>
-      <div class="shelf-list one-book">
+      <div class="shelf-list one-book" v-if="thisWeekNewBook && thisWeekNewBook.books.length > 0">
         <p class="title clear">
           本周新书
           <a href="javascript:;" class="pull_right">
@@ -67,28 +64,65 @@
           </a>
         </p>
         <div class="one-book-box clear" @click="goBookDetails">
-          <img src="static/images/test/book-1.jpg" alt>
+          <img :src="thisWeekNewBook.books[0].img" alt>
           <div class="right-content">
-            <p class="title">曾今，我爱国一个少年的人很大爱戴曾今，我爱国一个少年的人很大爱戴</p>
-            <p class="tips">两分钟的高能量的暴增发</p>
+            <p class="title">{{thisWeekNewBook.books[0].title}}</p>
+            <p class="tips">{{thisWeekNewBook.books[0].text}}</p>
           </div>
         </div>
       </div>
       <div class="shelf-list">
-        <p class="title clear">
-          近期更新
+        <p class="title clear sign">
+          本周推荐
           <a href="javascript:;" class="pull_right">
             全部
             <i class="iconfont icon-iconzhengli-"></i>
           </a>
         </p>
         <div class="shu-book-box">
-          <div class="shu-book-list clear" v-for="(item, index) in recentUpdateArr" :key="index">
-            <img src="static/images/test/book-1.jpg" alt>
+          <div class="shu-book-list clear" v-for="(item, index) in thisWeekRecommendBook.books" :key="index">
+            <img :src="item.img" alt>
             <div class="right-content">
-              <p class="title">曾今，我爱国一个少年的人很大爱戴曾今，我爱国一个少年的人很大爱戴</p>
-              <p class="tips">两分钟的高能量的暴增发人很大爱戴人很大爱戴人很大爱戴人很大爱戴人很大爱戴人很大爱戴人很大爱戴人很大爱戴人很大爱戴人很大爱戴</p>
-              <p class="author">张震</p>
+              <p class="title">{{item.title}}</p>
+              <p class="tips">{{item.text}}</p>
+              <p class="author">{{item.name}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="shelf-list">
+        <p class="title clear">
+          杂志更新
+          <a href="javascript:;" class="pull_right">
+            查看全部
+            <i class="iconfont icon-iconzhengli-"></i>
+          </a>
+          <p class="sub-title sign" v-html="updateMagazineBook.expireTime"></p>
+        </p>
+        <div class="heng-book-container">
+          <div class="heng-book-box">
+            <div class="heng-book-list" v-for="(item, index) in updateMagazineBook.books" :key="index" @click="gnJump(item.path)">
+              <img :src="item.imgSrc" alt>
+              <p class="title">{{item.name || '去推送'}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="shelf-list" v-for="(homePageItem, index) in homePageArr" :key="index">
+        <p class="title clear sign">
+          {{homePageItem.title}}
+          <a href="javascript:;" class="pull_right">
+            查看更多
+            <i class="iconfont icon-iconzhengli-"></i>
+          </a>
+        </p>
+        <div class="shu-book-box">
+          <div class="shu-book-list clear" v-for="(item, index) in homePageItem.books" :key="index">
+            <img :src="item.img" alt>
+            <div class="right-content">
+              <p class="title">{{item.title}}</p>
+              <p class="tips">{{item.text}}</p>
+              <p class="author">{{item.name}}</p>
             </div>
           </div>
         </div>
@@ -96,15 +130,18 @@
     </div>
     <div class="bookshelf-container" v-else>
       <div class="shelf-list">
-        <div class="shu-book-box">
-          <div class="shu-book-list clear" v-for="(item, index) in recentUpdateArr" :key="index">
-            <img src="static/images/test/book-1.jpg" alt>
+        <div class="shu-book-box" v-if="collectBook.length > 0">
+          <div class="shu-book-list clear" v-for="(item, index) in collectBook" :key="index">
+            <img :src="item.img" alt>
             <div class="right-content">
-              <p class="title">曾今，我爱国一个少年的人很大爱戴曾今，我爱国一个少年的人很大爱戴</p>
-              <p class="tips">两分钟的高能量的暴增发人很大爱戴人很大爱戴人很大爱戴人很大爱戴人很大爱戴人很大爱戴人很大爱戴人很大爱戴人很大爱戴人很大爱戴</p>
-              <p class="author">张震<span>推送151301次</span></p>
+              <p class="title">{{item.title}}</p>
+              <p class="tips">{{item.text}}</p>
+              <p class="author">{{item.name}}<span>推送151301次</span></p>
             </div>
           </div>
+        </div>
+        <div class="no-book-tips" v-else>
+          赶紧去添加书籍到收藏吧~
         </div>
       </div>
     </div>
@@ -147,18 +184,26 @@ export default {
         };
       },
       swiperArr: [
-        {
-          imgSrc: "static/images/index/1@2x.png"
-        },
-        {
-          imgSrc: "static/images/index/2@2x.png"
-        },
-        {
-          imgSrc: "static/images/index/3@2x.png"
-        },
-        {
-          imgSrc: "static/images/index/4@2x.png"
-        }
+        // {
+        //   image: "static/images/index/1@2x.png",
+        //   title: '',
+        //   url: ''
+        // },
+        // {
+        //   image: "static/images/index/2@2x.png",
+        //   title: '',
+        //   url: ''
+        // },
+        // {
+        //   image: "static/images/index/3@2x.png",
+        //   title: '',
+        //   url: ''
+        // },
+        // {
+        //   image: "static/images/index/4@2x.png",
+        //   title: '',
+        //   url: ''
+        // }
       ],
       gnArr: [
         {
@@ -185,65 +230,22 @@ export default {
           path: 'UserCenter'
         }
       ],
-      activityBookArr: [
-        {
-          imgSrc: "static/images/test/book-1.jpg",
-          path: 'OneClass'
-        },
-        {
-          imgSrc: "static/images/test/book-2.jpg"
-        },
-        {
-          imgSrc: "static/images/test/book-1.jpg"
-        },
-        {
-          imgSrc: "static/images/test/book-2.jpg"
-        },
-        {
-          imgSrc: "static/images/test/book-1.jpg"
-        },
-        {
-          imgSrc: "static/images/test/book-2.jpg"
-        }
-      ],
-      recentUpdateArr: [
-        {
-          imgSrc: "static/images/test/book-1.jpg",
-          title: "大京东",
-          author: "张三",
-          tips: "测试测试测试测试测试测试测试"
-        },
-        {
-          imgSrc: "static/images/test/book-2.jpg",
-          title: "大京东",
-          author: "张三",
-          tips: "测试测试测试测试测试测试测试"
-        },
-        {
-          imgSrc: "static/images/test/book-1.jpg",
-          title: "大京东",
-          author: "张三",
-          tips: "测试测试测试测试测试测试测试"
-        },
-        {
-          imgSrc: "static/images/test/book-2.jpg",
-          title: "大京东",
-          author: "张三",
-          tips: "测试测试测试测试测试测试测试"
-        },
-        {
-          imgSrc: "static/images/test/book-1.jpg",
-          title: "大京东",
-          author: "张三",
-          tips: "测试测试测试测试测试测试测试"
-        },
-        {
-          imgSrc: "static/images/test/book-2.jpg",
-          title: "大京东",
-          author: "张三",
-          tips: "测试测试测试测试测试测试测试"
-        }
-      ]
+      activityBook: {
+        books: []
+      },
+      thisWeekNewBook: {
+        books: []
+      },
+      thisWeekRecommendBook:{
+        books: []
+      },
+      updateMagazineBook:{
+        books: []
+      },
+      collectBook: {
+        books: []
+      },
+      homePageArr: []
     };
   },
   //在页面离开时记录滚动位置
@@ -260,22 +262,67 @@ export default {
     })
   },
   methods: {
-    getAdvertList: function(){
-      var _this = this;
-      _this.$ajax.get('/v1/advertList').then((res) => {
-      // 　　console.log(res)
+    getHomePageBook: function(){
+      var _this = this
+      return _this.$ajax.get('/v1/homePage').then((res) => {
+        var result = res.result
+        _this.homePageArr = result
       })
     },
+    getAdvertList: function(){
+      var _this = this
+      return _this.$ajax.get('/v1/advertList').then((res) => {
+          var result = res.result
+          _this.swiperArr = result
+          for(var i = 0 ; i < result.length; i++){
+            if(!result[i].image){
+              result[i].image = 'static/images/index/'+(i+1)+'@2x.png'
+            }
+          }
+      })
+    },
+    getActivityList: function(type){
+      var _this = this
+      return _this.$ajax.get('v1/activity?type=' + type).then((res) => {
+          var result = res.result
+          switch(type){
+            case 0:
+              _this.activityBook = result;
+              break;
+            case 1:
+              _this.thisWeekNewBook = result;
+              break;
+            case 2:
+              _this.thisWeekRecommendBook = result;
+              break;
+            case 3:
+              _this.updateMagazineBook = result;
+              break;
+            default: '';
+          }
+      })
+    },
+    getCollectList: function(){
+      var _this = this
+      _this.$loading.open('加载中')
+      _this.$ajax.get('v1/collectList')
+        .then((res) => {
+          var result = res.result
+          _this.collectBook = result
+          _this.$loading.close()
+        })
+    },
     activeMyNav: function(type) {
-      var _this = this;
-      _this.activeNavIndex = type;
+      var _this = this
+      _this.activeNavIndex = type
+      if(type === 1) _this.getCollectList()
     },
     gnJump(path){
-      var _this =this;
+      var _this =this
       _this.$router.push({path: path})
     },
     goBookDetails(){
-      var _this =this;
+      var _this =this
       _this.$router.push({path: 'BookDetails'})
     }
   },
@@ -283,7 +330,21 @@ export default {
     var _this = this;
     document.body.style.display = "block"
     // this.$toast.center('已经加入推送队列');
-    _this.getAdvertList()
+    _this.$loading.open('加载中')
+    _this.$ajax.all([
+        _this.getAdvertList(),  //加载轮播图
+        _this.getActivityList(0), //加载免费推送模块
+        _this.getActivityList(1), //加载本周新书
+        _this.getActivityList(2), //加载本周推荐
+        _this.getActivityList(3), //加载本周推荐
+        _this.getHomePageBook() //获取分类小说模块
+      ])
+      .then(_this.$ajax.spread((acct, perms) => {
+        _this.$loading.close()
+      }))
+      .catch(function (error) {
+        console.log(error)
+      })
   }
 };
 </script>

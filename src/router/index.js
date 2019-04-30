@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/views/Home'
 import OneClass from '@/views/OneClass'
+import TwoClass from '@/views/TwoClass'
 import Magazine from '@/views/Magazine'
 import BookDetails from '@/views/BookDetails'
 import Search from '@/views/Search'
@@ -30,6 +31,15 @@ export default new Router({
             path: '/OneClass',
             name: 'OneClass',
             component: OneClass,
+            meta: {
+                title: '分类',
+                keepAlive: true
+            }
+        },
+        {
+            path: '/TwoClass',
+            name: 'TwoClass',
+            component: TwoClass,
             meta: {
                 title: '分类',
                 keepAlive: true

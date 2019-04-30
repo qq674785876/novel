@@ -71,11 +71,13 @@
 .lx-load-box {
     position: fixed;
     z-index: 3;
-    width: 7.6em;
+    width: auto;
+    min-width: 30%;
     min-height: 7.6em;
-    top: 180px;
+    padding: 0 .4rem .4rem .4rem;
+    top: 50%;
     left: 50%;
-    margin-left: -3.8em;
+    transform: translate(-50%, -50%);
     background: rgba(0, 0, 0, 0.7);
     text-align: center;
     border-radius: 5px;
@@ -84,7 +86,7 @@
 
 .lx-load-content {
     margin-top: 64%;
-    font-size: 14px;
+    font-size: .42rem;
 }
 
 .lx-loading {
@@ -96,14 +98,14 @@
 
 .loading_leaf {
     position: absolute;
-    top: -1px;
+    top: -4px;
     opacity: 0.25;
 }
 
 .loading_leaf:before {
     content: " ";
     position: absolute;
-    width: 9.14px;
+    width: .3rem;
     height: 3.08px;
     background: #d1d1d5;
     box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px;

@@ -59,11 +59,23 @@
     height: calc(100vh - 3.4rem);
     overflow: auto;
 }
+.myCollection .no-book-tips{
+    text-align: center;
+    padding: 4rem 0;
+    font-size: .4rem;
+}
 
 .shelf-list>.title {
     padding: 0.2rem 0;
     font-size: 0.54rem;
     position: relative;
+}
+.shelf-list>.title>.sub-title{
+    color: #333333;
+    font-size: .48rem;
+}
+.shelf-list>.title>.sub-title>i{
+    font-size: .4rem;
 }
 
 .shelf-list>.title.sign::after {
@@ -87,6 +99,24 @@
 
 .shelf-list>.sub-title {
     font-size: 0.36rem;
+    position: relative;
+}
+.shelf-list>.sub-title.sign{
+    top: -.2rem;
+    font-size: .36rem;
+}
+.shelf-list>.sub-title.sign>>>i{
+    font-size: .46rem;
+}
+.shelf-list>.sub-title.sign::after {
+    content: '';
+    position: absolute;
+    width: .6rem;
+    height: 0.12rem;
+    background-color: #ffd100;
+    bottom: -.2rem;
+    left: 0;
+    border-radius: 0.1rem;
 }
 
 .shelf-list>.sub-title .tag {
@@ -103,7 +133,7 @@
     color: #666;
 }
 
-.shelf-list>.sub-title .time i {
+.shelf-list>.sub-title .time >>> i {
     font-size: 0.48rem;
     color: #333;
 }
@@ -135,6 +165,9 @@
 .heng-book-list .title {
     padding: 0.4rem 0;
     font-size: 0.42rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .one-book-box {
@@ -149,6 +182,7 @@
 }
 
 .one-book-box>img {
+    min-height: 3rem;
     width: 2.6rem;
     float: left;
     vertical-align: middle;
@@ -193,6 +227,7 @@
 }
 
 .shu-book-list>img {
+    min-height: 3rem;
     width: 2.6rem;
     float: left;
     vertical-align: middle;

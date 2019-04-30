@@ -14,7 +14,7 @@ axios.defaults.baseURL = apiURL;  // 默认地址
 //整理数据
 axios.defaults.transformRequest = function (data) {
 //data = Qs.stringify(data);
-data = JSON.stringify(data);
+  data = JSON.stringify(data);
   return data;
 };
 
@@ -47,7 +47,7 @@ axios.interceptors.response.use(
         console.log("response.data.resultCode是404")
         return
     }else{
-        return response;
+        return response.data;
     }
   },
   error => {
